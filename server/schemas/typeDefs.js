@@ -13,7 +13,7 @@ type Product {
     _id: ID!
     name: String!
     description: String!
-    price: Int!
+    price: Float!
     image: String!
     link: String!
 }
@@ -33,7 +33,9 @@ type Query {
 type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String)
-    addProduct(name: String!, description: String!, price: Int!, image: String, link: String): Product
+    addProduct(name: String!, description: String!, price: Float!, image: String, link: String): Product
     removeProduct(productId: ID!): Product
 }
-`
+`;
+
+module.exports = typeDefs
