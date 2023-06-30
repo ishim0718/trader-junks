@@ -15,6 +15,7 @@
     "bcrypt": "^4.0.1",
     "express": "^4.17.1",
     "graphql": "^16.2.0",
+    "jsonwebtoken": "^9.0.0",
     "mongoose": "^6.9.2",
     "stripe": "^12.10.0"
   },

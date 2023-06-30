@@ -21,6 +21,12 @@ const userSchema = new Schema({
   address: {
     //may need address validation
   },
+  products: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'Product'
+    }
+  ]
 
 });
 
