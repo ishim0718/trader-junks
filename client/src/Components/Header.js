@@ -1,6 +1,11 @@
+import SearchBar from "./SearchBar";
 function Header() {
     return (
-        <h1>Trader Junks</h1>
+        <header>
+            <h1>Trader Junks
+                <SearchBar />
+            </h1>
+        </header>
     );
 }
 

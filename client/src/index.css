@@ -1,6 +1,7 @@
 :root {
   --text: #2A2A25;
   --background: #CBC9AD;
+  --searchBar: #dbdac7;
 }
 
 body {
@@ -13,7 +14,6 @@ h3,
 h4,
 h5,
 h6 {
-  background-color: var(--background);
   font-family: 'Rubik Mono One', sans-serif;
   color: var(--text);
 }
@@ -22,10 +22,32 @@ h6 {
   font-weight: 300;
   font-style: italic;
 }
-
+header {
+  height: 7em;
+  background-color: var(--background);
+  padding-left: 1em;
+  padding-top: 1px;
+}
+header > * {
+  position: relative;
+  top: -10%;
+}
 footer {
   background-color: var(--background);
   font-size: 1.15em;
   text-align: center;
   color: var(--text);
+}
+
+.searchBar {
+  width: 20rem;
+  background-color:var(--searchBar);
+  border: none;
+  padding: 0.75rem; 
+  border-radius: 1em;
+  margin: .5em;
+  display: inline-flex;
+  width: 30%;
+  position: relative;
+  left: 12%;
 }
