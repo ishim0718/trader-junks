@@ -2,6 +2,8 @@ import React from 'react';
 import Home from './pages/Home';
 import User from './pages/User';
 import Search from './pages/SearchItems';
+import Header from './Components/Header';
+import Footer from './Components/Footer';
 
 const client = new ApolloClient({
   uri: '/graphql',

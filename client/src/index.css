@@ -1,3 +1,8 @@
+:root {
+  --text: #2A2A25;
+  --background: #CBC9AD;
+}
+
 body {
   font-family: 'Rubik', sans-serif;
 }
@@ -8,10 +13,19 @@ h3,
 h4,
 h5,
 h6 {
+  background-color: var(--background);
   font-family: 'Rubik Mono One', sans-serif;
+  color: var(--text);
 }
 
 .small {
   font-weight: 300;
   font-style: italic;
+}
+
+footer {
+  background-color: var(--background);
+  font-size: 1.15em;
+  text-align: center;
+  color: var(--text);
 }
