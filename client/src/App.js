@@ -1,13 +1,40 @@
 import React from 'react';
+import Home from './pages/Home';
+import User from './pages/User';
+import Search from './pages/SearchItems';
 import Header from './Components/Header';
 import Footer from './Components/Footer';
 
+const client = new ApolloClient({
+  uri: '/graphql',
+  cache: new InMemoryCache(),
+});
+
 function App() {
   return (
-    <div>
-      <Header />
-      <Footer />
-    </div>
+    <ApolloProvider client={client}>
+    <Router>
+      <div>
+        <StoreProvider>
+          <Nav />
+          <Routes>
+            <Route 
+              path="/" 
+              element={<Home />} 
+            />
+            <Route 
+              path="/User" 
+              element={<User />} 
+            />
+            <Route 
+              path="/searchItems" 
+              element={<Search />} 
+            />
+            </Routes>
+        </StoreProvider>
+      </div>
+    </Router>
+  </ApolloProvider>
   );
 }
 
