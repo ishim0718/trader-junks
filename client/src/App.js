@@ -4,6 +4,7 @@ import User from './pages/User';
 import Search from './pages/SearchItems';
 import Header from './Components/Header';
 import Footer from './Components/Footer';
+import Checkout from './pages/Checkout';
 
 const client = new ApolloClient({
   uri: '/graphql',
@@ -29,6 +30,11 @@ function App() {
             <Route 
               path="/searchItems" 
               element={<Search />} 
+            />
+            </Routes>
+            <Route 
+              path="/Checkout" 
+              element={<Checkout />} 
             />
             </Routes>
         </StoreProvider>
