@@ -24,16 +24,21 @@ class AuthService {
     }
 
     getToken() {
+        // Retrieves token from local storage
         return localStorage.getItem('id_token');
     }
 
     login(idToken) {
+        // Set token to local storage
         localStorage.setItem('id_token', idToken);
         window.location.assign('/');
     }
 
     logout() {
+        // removes user token and profile data from local storage
         localStorage.removeItem('id_token');
         window.location.reload();
     }
 }
+
+export default new AuthService()
