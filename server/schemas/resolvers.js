@@ -5,10 +5,11 @@ const { signToken } = require('../utils/auth');
 const resolvers = {
     Query: {
         user: async(parent, { username }) => {
-            return User.findOne({ username })
+            return User.findOne({ username }).populate('products');
         },
-        products: async() => {
-            return Product.find()
+        products: async(parent, { username }) => {
+            const params = username ? { username } : {}
+            return Product.find(params).sort({ _id: 1 })
         },
         product: async(parent, { productId }) => {
             return Product.findOne({ _id: productId });
@@ -58,7 +59,7 @@ const resolvers = {
             throw new AuthenticationError('You need to be Logged in!')
         },
         removeProduct: async(parent, { productId }, context) => {
-            if (context.user ) {
+            if (context.user) {
                 const product = Product.findOneAndDelete({
                     _id: productId,
                     addedBy: context.user.username,

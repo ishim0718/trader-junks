@@ -20,6 +20,8 @@ const userSchema = new Schema({
   },
   address: {
     //may need address validation
+    type: String,
+    required: true
   },
   products: [
     {
