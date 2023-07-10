@@ -6,6 +6,19 @@ type User {
     username: String!
     email: String!
     password: String!
+    firstname: String!
+    lastname: String!
+    address: String!
+    products: [Product]!
+}
+
+input UserInput {
+    _id: ID!
+    username: String!
+    email: String!
+    password: String!
+    firstname: String!
+    lastname: String!
     address: String!
     products: [Product]!
 }
@@ -32,7 +45,7 @@ type Query {
 }
 
 type Mutation {
-    addUser(username: String!, email: String!, password: String!): Auth
+    addUser(content: UserInput!): Auth
     login(email: String!, password: String): Auth
     addProduct(name: String!, description: String!, price: Float!, image: String, link: String): Product
     removeProduct(productId: ID!): Product
