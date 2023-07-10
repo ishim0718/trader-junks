@@ -3,34 +3,38 @@ import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import Auth from '../utils/auth';
 import { ADD_USER } from '../utils/mutations';
-import AddressValidation from '../utils/addressValidation';
 
 function Signup(props) {
-  const [formState, setFormState] = useState({ email: '', password: '' });
+  const [formState, setFormState] = useState({ 
+    email: '', 
+    password: '', 
+    firstname: '',
+    lastname: '',
+    addressLines: '',
+    locality: '',
+    administrativeArea: '',
+    postalCode: '',
+    });
+  const formattedAddress = "";
   const [addUser] = useMutation(ADD_USER);
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-  //   const address = await AddressValidation({
-  //     variables: {
-  //       street: formState.street,
-  //       city: formState.city,
-  //       state: formState.state,
-  //       zipcode: formState.zipcode,
-  //     },
-  //   })
-  //   .then(await addUser({
-  //     variables: {
-  //       email: formState.email,
-  //       password: formState.password,
-  //       firstName: formState.firstName,
-  //       lastName: formState.lastName,
-  //       address: address, 
-  //     },
-  //   }));
-  //   const token = mutationResponse.data.addUser.token;
-  //   Auth.login(token);
-  // };
+      await fetch("https://addressvalidation.googleapis.com/v1:validateAddress?key=AIzaSyDSUiY4jXZTrr3I1lYuikW54okCCCgcXyY", {
+        method: "POST",
+        body: JSON.stringify({
+          address: {
+            regionCode: "US",
+            addressLines: addressLines,
+            locality: locality,
+            administrativeArea: administrativeArea,
+            postalCode: postalCode,
+          },
+          enableUspsCass: true
+        }),
+      })
+      .then(res => res.json())
+      .then(json[1].formattedAddress = formattedAddress);
 
     const mutationResponse = await addUser({
       variables: {
@@ -38,6 +42,7 @@ function Signup(props) {
         password: formState.password,
         firstName: formState.firstName,
         lastName: formState.lastName,
+        address: formattedAddress,
       }
     });
     const token = mutationResponse.data.addUser.token;
@@ -102,38 +107,38 @@ function Signup(props) {
           <label>Address:</label>
         </div>
         <div className="flex-row space-between my-2">
-          <label htmlFor="pwd">Street Line:</label>
+          <label htmlFor="addressLines">Street Line:</label>
           <input
-            name="street"
-            type="adress"
-            id="street"
+            name="addressLines"
+            type="text"
+            id="addressLines"
             onChange={handleChange}
           />
         </div>
         <div className="flex-row space-between my-2">
-          <label htmlFor="pwd">City:</label>
+          <label htmlFor="locality">City:</label>
           <input
-            name="city"
-            type="adress"
-            id="city"
+            name="locality"
+            type="text"
+            id="locality"
             onChange={handleChange}
           />
         </div>
         <div className="flex-row space-between my-2">
-          <label htmlFor="pwd">State:</label>
+          <label htmlFor="administrativeArea">State:</label>
           <input
-            name="state"
-            type="adress"
-            id="state"
+            name="administrativeArea"
+            type="text"
+            id="administrativeArea"
             onChange={handleChange}
           />
         </div>
         <div className="flex-row space-between my-2">
-          <label htmlFor="pwd">Zip Code:</label>
+          <label htmlFor="postalCode">Zip Code:</label>
           <input
-            name="zipcode"
+            name="postalCode"
             type="adress"
-            id="zipcode"
+            id="postalCode"
             onChange={handleChange}
           />
         </div>
