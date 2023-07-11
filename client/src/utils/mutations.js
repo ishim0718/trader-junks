@@ -11,9 +11,9 @@ mutation addUser($username: String!, $email: String!, $password: String!, $addre
             address
             firstname
             lastname
-            }
         }
     }
+}
 `;
 export const LOGIN_USER = gql`
 mutation login($email: String!, $password: String!) {

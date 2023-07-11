@@ -16,21 +16,22 @@ function Signup(props)  {
     administrativeArea: '',
     postalCode: '',
     });
-    
+   
+  var apiResponse = '';
   var formattedAddress = '';
+  var dvpResponse = '';
 
-  const [addUser] = useMutation(ADD_USER);
+  const [addUser, { error, data }] = useMutation(ADD_USER);
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-
       await fetch("https://addressvalidation.googleapis.com/v1:validateAddress?key=AIzaSyDSUiY4jXZTrr3I1lYuikW54okCCCgcXyY", {
         method: "POST",
         body: JSON.stringify({
           address: {
             regionCode: "US",
             addressLines: formState.addressLines,
-            locality: formState.locality,
+            locality: formState.localitys,
             administrativeArea: formState.administrativeArea,
             postalCode: formState.postalCode,
           },
@@ -38,25 +39,50 @@ function Signup(props)  {
         }),
       })
       .then(response => response.json())
-      .then(data => formattedAddress = data.result.address.formattedAddress);
+      .then(data => apiResponse = data);
 
-      console.log(formattedAddress);
-    
-    const mutationResponse = await addUser({
-      variables: {
-        username: formState.username,
-        email: formState.email,
-        password: formState.password,
-        firstName: formState.firstName,
-        lastName: formState.lastName,
-        address: formattedAddress,
-      }
-    });
-
-    //   console.log(mutationResponse);
+      formattedAddress = apiResponse.result.address.formattedAddress;
+      dvpResponse = apiResponse.result.uspsData.dpvConfirmation;
   
-    const token = mutationResponse.data.addUser.token;
-      Auth.login(token);
+      console.log(formattedAddress);
+      console.log(dvpResponse);
+      console.log(formState)
+
+      if(dvpResponse === "Y") {
+        try {
+          const mutationResponse = await addUser({
+            variables: {
+              username: formState.username,
+              email: formState.email,
+              password: formState.password,
+              firstname: formState.firstname,
+              lastname: formState.lastname,
+              address: formattedAddress,
+          }});
+          // const token = mutationResponse.addUser.token;
+          //   Auth.login(token);
+        } catch(e) {
+          console.log(e);
+        }
+      } else {
+          console.log("Cannot deliver to this address");
+      };
+    
+    // const mutationResponse = await addUser({
+    //   variables: {
+    //     username: formState.username,
+    //     email: formState.email,
+    //     password: formState.password,
+    //     firstName: formState.firstName,
+    //     lastName: formState.lastName,
+    //     address: formattedAddress,
+    //   }
+    // });
+
+    // console.log(mutationResponse);
+  
+    // const token = data.addUser.token;
+    //   Auth.login(token);
   };
 
   const handleChange = (event) => {
@@ -76,6 +102,7 @@ function Signup(props)  {
         <div className="flex-row space-between my-2">
           <label htmlFor="username">Username: </label>
           <input
+            placeholder="User"
             name="username"
             type="text"
             id="username"
@@ -83,22 +110,22 @@ function Signup(props)  {
           />
         </div>
         <div className="flex-row space-between my-2">
-          <label htmlFor="firstName">First Name: </label>
+          <label htmlFor="firstname">First Name: </label>
           <input
             placeholder="First"
-            name="firstName"
-            type="firstName"
-            id="firstName"
+            name="firstname"
+            type="text"
+            id="firstname"
             onChange={handleChange}
           />
         </div>
         <div className="flex-row space-between my-2">
-          <label htmlFor="lastName">Last Name: </label>
+          <label htmlFor="lastname">Last Name: </label>
           <input
             placeholder="Last"
-            name="lastName"
-            type="lastName"
-            id="lastName"
+            name="lastname"
+            type="text"
+            id="lastname"
             onChange={handleChange}
           />
         </div>
