@@ -1,68 +1,51 @@
-import React from 'react';
-import Home from './pages/Home';
-import User from './pages/User';
-import Search from './pages/Products';
-import Header from './Components/Header';
-import Footer from './Components/Footer';
-import Checkout from './pages/Checkout';
-import { StoreProvider } from './utils/GlobalState';
-import Nav from './Components/Nav';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import {
-  ApolloClient,
-  InMemoryCache,
-  ApolloProvider,
-  createHttpLink,
-} from '@apollo/client';
-import { setContext } from '@apollo/client/link/context';
-import Signup from './pages/Signup';
+import React from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { ApolloProvider } from '@apollo/react-hooks';
+import ApolloClient from 'apollo-boost';
+import { Provider } from 'react-redux';
 
-const httpLink = createHttpLink({
-  uri: '/graphql',
-});
+import Nav from "./components/Nav";
 
-const authLink = setContext((_, { headers }) => {
-  const token = localStorage.getItem('id_token');
-  return {
-    headers: {
-      ...headers,
-      authorization: token ? `Bearer ${token}` : '',
-    },
-  };
-});
+import Home from "./pages/HomePage";
+import Products from "./pages/Products";
+import Login from "./pages/login";
+import Signup from "./pages/Signup";
+import OrderHistory from "./pages/OrderHistory";
+
+import store from './utils/store';
 
 const client = new ApolloClient({
-  link: authLink.concat(httpLink),
-  cache: new InMemoryCache(),
-});
+    request: (operation) => {
+        const token = localStorage.getItem('id_token');
+        
+        operation.setContext({
+            headers: {
+                authorization: token ? `Bearer ${token}` : ''
+            }
+        })
+    },
+    uri: '/graphql',
+})
 
 function App() {
-  return (
-    <ApolloProvider client={client}>
-      <Router>
-        <div>
-          <Signup />
-          {/* <StoreProvider>
-            <Nav />
-            <Routes>
-              <Route 
-                path="/" 
-                element={<Home />} 
-              />
-              <Route 
-                path="/User" 
-                element={<User />} 
-              />
-              <Route 
-                path="/products" 
-                element={<Search />} 
-              />
-            </Routes>
-          </StoreProvider> */}
-        </div>
-      </Router>
-    </ApolloProvider>
-  );
+    return (
+        <ApolloProvider client={client}>
+        <Router>
+            <div>
+            <Provider store={store}>
+                <Nav />
+                <Switch>
+                    <Route exact path="/Home" component={Home} />
+                    <Route exact path="/Login" component={Login} />
+                    <Route exact path="/Signup" component={Signup} />
+                    <Route exact path="/OrderHistory" component={OrderHistory} />
+                    <Route exact path="/Products" component={Products} />
+                </Switch>
+            </Provider>
+            </div>
+        </Router>
+        </ApolloProvider>
+    );
 }
 
 export default App;
