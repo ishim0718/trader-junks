@@ -59,8 +59,9 @@ footer {
   justify-content: right;
 }
 
-.flex-row nav ul .mx-1 {
+.flex-row nav ul .mx-1 a {
   padding-right: 3em;
+  color: var(--header-hover);
 }
 
 .mx-1 {
@@ -76,12 +77,14 @@ footer {
   color: var(--header);
 }
 
-.flex-row h1 a span{
-  color: transparent;
-  text-shadow: 0 0 0 rgb(241, 214, 62);
-}
-
 .flex-row h1 a:hover {
   color: var(--header-hover);
+  text-decoration: none;
+}
+a:hover .trashcan{
+  filter: brightness(1) invert(0) sepia(1) 
+  hue-rotate(2deg) 
+  saturate(10);
+  list-style: none;
   text-decoration: none;
 }

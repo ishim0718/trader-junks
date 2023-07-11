@@ -11,9 +11,6 @@ const Home = () => {
 
   return (
     <div className="card bg-white card-rounded w-50">
-      <div className="card-header text-center">
-        <h1>Welcome to Trader Junks!</h1>
-      </div>
       <div className="card-body m-5">
         <h2>Here are some items you might like:</h2>
         {loading ? (
