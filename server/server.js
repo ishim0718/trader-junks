@@ -1,10 +1,10 @@
 
-require('dotenv').config()
+// require('dotenv').config()
 
 
 const stripe = require('stripe')(process.env.STRIPE_PRIVATE_KEY)
 
-const storeItems = new map([])
+// const storeItems = new map([])
 const express = require('express');
 const { ApolloServer } = require('apollo-server-express');
 const path = require('path');
