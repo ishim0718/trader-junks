@@ -5,6 +5,8 @@ import Search from './pages/Products';
 import Header from './Components/Header';
 import Footer from './Components/Footer';
 import Checkout from './pages/Checkout';
+import { StoreProvider } from './utils/GlobalState';
+import Nav from './Components/Nav';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import {
   ApolloClient,
@@ -12,6 +14,8 @@ import {
   ApolloProvider,
   createHttpLink,
 } from '@apollo/client';
+import { setContext } from '@apollo/client/link/context';
+import Signup from './pages/Signup';
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -37,7 +41,8 @@ function App() {
     <ApolloProvider client={client}>
       <Router>
         <div>
-          <StoreProvider>
+          <Signup />
+          {/* <StoreProvider>
             <Nav />
             <Routes>
               <Route 
@@ -53,7 +58,7 @@ function App() {
                 element={<Search />} 
               />
             </Routes>
-          </StoreProvider>
+          </StoreProvider> */}
         </div>
       </Router>
     </ApolloProvider>

@@ -2,6 +2,8 @@
   --text: #2A2A25;
   --background: #CBC9AD;
   --searchBar: #dbdac7;
+  --header: #979469;
+  --header-hover: #696746;
 }
 
 body {
@@ -22,7 +24,7 @@ h6 {
   font-weight: 300;
   font-style: italic;
 }
-header {
+header, .header {
   height: 7em;
   background-color: var(--background);
   padding-left: 1em;
@@ -50,4 +52,39 @@ footer {
   width: 30%;
   position: relative;
   left: 12%;
+}
+
+.flex-row nav ul {
+  display: flex;
+  justify-content: right;
+}
+
+.flex-row nav ul .mx-1 a {
+  padding-right: 3em;
+  color: var(--header-hover);
+}
+
+.mx-1 {
+  list-style: none;
+}
+
+.flex-row h1 {
+  display: flex;
+  margin-top: 1em;
+}
+
+.flex-row h1 a {
+  color: var(--header);
+}
+
+.flex-row h1 a:hover {
+  color: var(--header-hover);
+  text-decoration: none;
+}
+a:hover .trashcan{
+  filter: brightness(1) invert(0) sepia(1) 
+  hue-rotate(2deg) 
+  saturate(10);
+  list-style: none;
+  text-decoration: none;
 }
