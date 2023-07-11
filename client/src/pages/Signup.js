@@ -4,8 +4,9 @@ import { useMutation } from '@apollo/client';
 import Auth from '../utils/auth';
 import { ADD_USER } from '../utils/mutations';
 
-function Signup(props) {
+function Signup(props)  {
   const [formState, setFormState] = useState({ 
+    username: '',
     email: '', 
     password: '', 
     firstname: '',
@@ -15,7 +16,9 @@ function Signup(props) {
     administrativeArea: '',
     postalCode: '',
     });
-  const formattedAddress = "";
+    
+  var formattedAddress = '';
+
   const [addUser] = useMutation(ADD_USER);
 
   const handleFormSubmit = async (event) => {
@@ -25,19 +28,22 @@ function Signup(props) {
         body: JSON.stringify({
           address: {
             regionCode: "US",
-            addressLines: addressLines,
-            locality: locality,
-            administrativeArea: administrativeArea,
-            postalCode: postalCode,
+            addressLines: formState.addressLines,
+            locality: formState.locality,
+            administrativeArea: formState.administrativeArea,
+            postalCode: formState.postalCode,
           },
           enableUspsCass: true
         }),
       })
-      .then(res => res.json())
-      .then(json[1].formattedAddress = formattedAddress);
+      .then(response => response.json())
+      .then(data => formattedAddress = data.result.address.formattedAddress);
 
+      console.log(formattedAddress);
+    
     const mutationResponse = await addUser({
       variables: {
+        username: formState.username,
         email: formState.email,
         password: formState.password,
         firstName: formState.firstName,
@@ -45,8 +51,11 @@ function Signup(props) {
         address: formattedAddress,
       }
     });
+
+    //   console.log(mutationResponse);
+  
     const token = mutationResponse.data.addUser.token;
-    Auth.login(token);
+      Auth.login(token);
   };
 
   const handleChange = (event) => {
@@ -64,7 +73,16 @@ function Signup(props) {
       <h2>Signup</h2>
       <form onSubmit={handleFormSubmit}>
         <div className="flex-row space-between my-2">
-          <label htmlFor="firstName">First Name:</label>
+          <label htmlFor="username">Username: </label>
+          <input
+            name="username"
+            type="text"
+            id="username"
+            onChange={handleChange}
+          />
+        </div>
+        <div className="flex-row space-between my-2">
+          <label htmlFor="firstName">First Name: </label>
           <input
             placeholder="First"
             name="firstName"
@@ -74,7 +92,7 @@ function Signup(props) {
           />
         </div>
         <div className="flex-row space-between my-2">
-          <label htmlFor="lastName">Last Name:</label>
+          <label htmlFor="lastName">Last Name: </label>
           <input
             placeholder="Last"
             name="lastName"
@@ -84,7 +102,7 @@ function Signup(props) {
           />
         </div>
         <div className="flex-row space-between my-2">
-          <label htmlFor="email">Email:</label>
+          <label htmlFor="email">Email: </label>
           <input
             placeholder="youremail@test.com"
             name="email"
@@ -94,7 +112,7 @@ function Signup(props) {
           />
         </div>
         <div className="flex-row space-between my-2">
-          <label htmlFor="pwd">Password:</label>
+          <label htmlFor="pwd">Password: </label>
           <input
             placeholder="******"
             name="password"
@@ -107,7 +125,7 @@ function Signup(props) {
           <label>Address:</label>
         </div>
         <div className="flex-row space-between my-2">
-          <label htmlFor="addressLines">Street Line:</label>
+          <label htmlFor="addressLines">Street Line: </label>
           <input
             name="addressLines"
             type="text"
@@ -116,7 +134,7 @@ function Signup(props) {
           />
         </div>
         <div className="flex-row space-between my-2">
-          <label htmlFor="locality">City:</label>
+          <label htmlFor="locality">City: </label>
           <input
             name="locality"
             type="text"
@@ -125,7 +143,7 @@ function Signup(props) {
           />
         </div>
         <div className="flex-row space-between my-2">
-          <label htmlFor="administrativeArea">State:</label>
+          <label htmlFor="administrativeArea">State: </label>
           <input
             name="administrativeArea"
             type="text"
@@ -134,7 +152,7 @@ function Signup(props) {
           />
         </div>
         <div className="flex-row space-between my-2">
-          <label htmlFor="postalCode">Zip Code:</label>
+          <label htmlFor="postalCode">Zip Code: </label>
           <input
             name="postalCode"
             type="adress"
