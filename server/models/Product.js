@@ -17,10 +17,6 @@ const productSchema = new Schema({
     type: String,
     required: true,
   },
-  link: {
-    type: String,
-    required: true,
-  },
   addedBy: {
     type: String,
     required: true

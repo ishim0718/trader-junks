@@ -1,0 +1,74 @@
+[
+    {
+        "username": "thomasshea",
+        "email": "thomasshea@gmail.com",
+        "password": "password1234",
+        "firstname": "Thomas",
+        "lastname": "Shea",
+        "address": "201 Main St, Mobile, AL"
+    },
+    {
+        "username": "ianheap",
+        "email": "ianheap@gmail.com",
+        "password": "password1234",
+        "firstname": "Ian",
+        "lastname": "Heap",
+        "address": "300 Main St, Savannah, GA"
+    },
+    {
+        "username": "daveshim",
+        "email": "daveshim@yahoo.com",
+        "password": "password1234",
+        "firstname": "Dave",
+        "lastname": "Shim",
+        "address": "500 Peachtree St, Atlanta, GA"
+    },
+    {
+        "username": "tamjidhossain",
+        "email": "tamjidhossain@gmail.com",
+        "password": "password1234",
+        "firstname": "Tamjid",
+        "lastname": "Hossain",
+        "address": "700 Main St. Marietta, GA"
+    },
+    {
+        "username": "chrisramsey",
+        "email": "chrisramsey@gmail.com",
+        "password": "password1234",
+        "firstname": "Chris",
+        "lastname": "Ramsey",
+        "address": "600 Main St Roswell, GA"
+    },
+    {
+        "username": "rickybobby",
+        "email": "rickybobby@gmail.com",
+        "password": "password1234",
+        "firstname": "Ricky", 
+        "lastname": "Bobby",
+        "address": "123 Speedway Rd, Talladega, AL"
+    },
+    {
+        "username": "bobbyboucher",
+        "email": "gatoradesucks@yahoo.com",
+        "password": "password1234",
+        "firstname": "Bobby",
+        "lastname": "Boucher",
+        "address": "100 Bayou St, Houma, LA"
+    },
+    {
+        "username": "tonystark",
+        "email": "iamiroman@yahoo.com",
+        "password": "password1234",
+        "firstname": "Tony",
+        "lastname": "Stark",
+        "address": "600 Beverly Hills Rd, Beverly Hills, CA"
+    },
+    {
+        "username": "jonsnow",
+        "email": "kingofthenorth@gmail.com",
+        "password": "password1234",
+        "firstname": "Jon",
+        "lastname": "Snow",
+        "address": "100 Mountain Pass, Bangor, ME"
+    }
+]
