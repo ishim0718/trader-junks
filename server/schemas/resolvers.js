@@ -4,15 +4,20 @@ const { signToken } = require('../utils/auth');
 
 const resolvers = {
     Query: {
+        // query a user based on username
         user: async(parent, { username }) => {
-            return User.findOne({ username })
+            return User.findOne({ username }).populate('products');
         },
-        products: async() => {
-            return Product.find()
+        // query a user's products
+        products: async(parent, { username }) => {
+            const params = username ? { username } : {}
+            return Product.find(params).sort({ _id: 1 })
         },
+        // query a single product by productId
         product: async(parent, { productId }) => {
             return Product.findOne({ _id: productId });
         },
+        // query me
         me: async(parent, args, context) => {
             if (context.user) {
                 return User.findOne({ _id: context.user._id }).populate('products');
@@ -22,11 +27,13 @@ const resolvers = {
     },
 
     Mutation: {
+        // mutation to add a new user
         addUser: async(parent, { username, email, password }) => {
             const user = await User.create({ username, email, password });
             const token = signToken(user);
             return { token, user }
         },
+        // login mutation
         login: async(parent, { email, password }) => {
             const user = await User.findOne({ email });
             if (!user) {
@@ -39,6 +46,7 @@ const resolvers = {
             const token = signToken(user);
             return { token, user }
         },
+        // mutation to add a product
         addProduct: async(parent, {name, description, price, image, link }, context) => {
             if (context.user) {
                 const product = await Product.create({
@@ -57,8 +65,9 @@ const resolvers = {
             }
             throw new AuthenticationError('You need to be Logged in!')
         },
+        // mutation to remove a product
         removeProduct: async(parent, { productId }, context) => {
-            if (context.user ) {
+            if (context.user) {
                 const product = Product.findOneAndDelete({
                     _id: productId,
                     addedBy: context.user.username,

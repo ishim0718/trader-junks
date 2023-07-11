@@ -18,8 +18,18 @@ const userSchema = new Schema({
     required: true,
     minlength: 5,
   },
+  firstname: {
+    type: String,
+    required: true,
+  },
+  lastname: {
+    type: String,
+    required: true,
+  },
   address: {
     //may need address validation
+    type: String,
+    required: true,
   },
   products: [
     {
