@@ -12,7 +12,7 @@ import Home from './pages/Home';
 import Products from './pages/Products';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
-import Nav from './components/Nav';
+import Nav from './components/Nav/index';
 import { StoreProvider } from './utils/GlobalState';
 import OrderHistory from './pages/OrderHistory';
 
