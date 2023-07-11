@@ -35,8 +35,5 @@ const Home = () => {
           <button className="btn btn-lg btn-danger">Checkout!</button>
         </Link>
       </div>
-    </div>
-  );
-};
-
+      
 export default Home;
