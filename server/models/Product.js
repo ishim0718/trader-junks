@@ -21,6 +21,10 @@ const productSchema = new Schema({
     type: String,
     required: true,
   },
+  addedBy: {
+    type: String,
+    required: true
+  }
 });
 
 const Product = model('Product', productSchema);
