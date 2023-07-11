@@ -2,7 +2,7 @@
 // require('dotenv').config()
 
 
-const stripe = require('stripe')(process.env.STRIPE_PRIVATE_KEY)
+// const stripe = require('stripe')(process.env.STRIPE_PRIVATE_KEY)
 
 // const storeItems = new map([])
 const express = require('express');
