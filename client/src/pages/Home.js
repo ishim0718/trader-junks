@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
-import { QUERY_MATCHUPS } from '../utils/queries';
+import { QUERY_PRODUCTS } from '../utils/queries';
 
 const Home = () => {
-  const { loading, data } = useQuery(QUERY_MATCHUPS, {
+  const { loading, data } = useQuery(QUERY_PRODUCTS, {
     fetchPolicy: "no-cache"
   });
 
@@ -11,9 +11,6 @@ const Home = () => {
 
   return (
     <div className="card bg-white card-rounded w-50">
-      <div className="card-header bg-dark text-center">
-        <h1>Welcome to Trader Junks!</h1>
-      </div>
       <div className="card-body m-5">
         <h2>Here are some items you might like:</h2>
         {loading ? (
@@ -39,7 +36,6 @@ const Home = () => {
         </Link>
       </div>
     </div>
-  );
-};
-
+  )
+}      
 export default Home;

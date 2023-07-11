@@ -23,6 +23,7 @@ function Signup(props)  {
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
+
       await fetch("https://addressvalidation.googleapis.com/v1:validateAddress?key=AIzaSyDSUiY4jXZTrr3I1lYuikW54okCCCgcXyY", {
         method: "POST",
         body: JSON.stringify({
