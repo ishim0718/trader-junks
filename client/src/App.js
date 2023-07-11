@@ -1,12 +1,12 @@
 import React from 'react';
-import Home from './pages/Home';
-import User from './pages/User';
-import Search from './pages/Products';
-import Header from './Components/Header';
-import Footer from './Components/Footer';
-import Checkout from './pages/Checkout';
+// import Home from './pages/Home';
+// // import User from './pages/User';
+// import Search from './pages/Products';
+// import Header from './Components/Header';
+// import Footer from './Components/Footer';
+// import Checkout from './pages/Checkout';
 import { StoreProvider } from './utils/GlobalState';
-import Nav from './Components/Nav';
+// import Nav from './Components/Nav';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import {
   ApolloClient,
@@ -41,9 +41,9 @@ function App() {
     <ApolloProvider client={client}>
       <Router>
         <div>
-          <Signup />
-          {/* <StoreProvider>
-            <Nav />
+          <StoreProvider>
+            <Signup />
+            {/* <Nav />
             <Routes>
               <Route 
                 path="/" 
@@ -57,8 +57,8 @@ function App() {
                 path="/products" 
                 element={<Search />} 
               />
-            </Routes>
-          </StoreProvider> */}
+            </Routes> */}
+          </StoreProvider>
         </div>
       </Router>
     </ApolloProvider>
