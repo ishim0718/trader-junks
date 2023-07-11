@@ -1,12 +1,10 @@
 import React from "react";
-import ProductList from "../components/ProductList";
-import CategoryMenu from "../components/CategoryMenu";
+import ProductList from "../Components/ProductList";
 import Cart from "../components/Cart";
 
 const HomePage = () => {
   return (
     <div className="container">
-      <CategoryMenu />
       <ProductList />
       <Cart />
     </div>
