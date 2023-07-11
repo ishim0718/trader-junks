@@ -30,7 +30,7 @@ query getProducts {
 }
 `;
 
-export const QUERY_SINGLE_PRODUCT = gql `
+export const QUERY_SINGLE_PRODUCT = gql`
 query getSingleProduct($productId: ID!) {
     product(productId: $productId) {
         _id

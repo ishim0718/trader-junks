@@ -27,7 +27,6 @@ const userSchema = new Schema({
     required: true,
   },
   address: {
-    //may need address validation
     type: String,
     required: true,
   },
