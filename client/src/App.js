@@ -8,11 +8,11 @@ import {
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 
-import Home from './pages/Home';
+import Home from './pages/HomePage';
 import Products from './pages/Products';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
-import Nav from './components/Nav/index';
+import Nav from './Components/Nav';
 import { StoreProvider } from './utils/GlobalState';
 import OrderHistory from './pages/OrderHistory';
 
