@@ -19,7 +19,8 @@ const productSchema = new Schema({
   },
   addedBy: {
     type: String,
-    required: true
+    required: true,
+    trim: true
   }
 });
 
