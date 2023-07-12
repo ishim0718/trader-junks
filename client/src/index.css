@@ -64,6 +64,12 @@ footer {
   color: var(--header-hover);
 }
 
+.flex-row nav ul .mx-1 a:hover {
+  filter: brightness(1) invert(0) sepia(1) 
+  hue-rotate(30deg) 
+  saturate(10);
+}
+
 .mx-1 {
   list-style: none;
 }
@@ -85,6 +91,8 @@ a:hover .trashcan{
   filter: brightness(1) invert(0) sepia(1) 
   hue-rotate(2deg) 
   saturate(10);
+  box-shadow: 0px 0px 25px #fff;
+  border-radius: 15px;
   list-style: none;
   text-decoration: none;
 }
