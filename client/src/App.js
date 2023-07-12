@@ -12,7 +12,6 @@ import HomePage from './pages/HomePage';
 import Products from './pages/Products';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
-
 import Nav from './Components/Nav';
 import { StoreProvider } from './utils/GlobalState';
 import OrderHistory from './pages/OrderHistory';
