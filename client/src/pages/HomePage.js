@@ -2,7 +2,7 @@ import React from "react";
 import ProductItem from "../Components/ProductItem";
 import ProductList from "../Components/ProductList"
 // import Cart from "../Components/Cart";
-import { USE_QUERY, useQuery } from '@apollo/client'
+import { useQuery } from '@apollo/client'
 import { QUERY_PRODUCTS } from "../utils/queries";
 
 
