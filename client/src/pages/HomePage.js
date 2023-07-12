@@ -1,12 +1,13 @@
 import React from "react";
-import ProductList from "../Components/ProductList";
-import Cart from "../components/Cart";
+import ProductItem from "../Components/ProductItem";
+import ProductList from "../Components/ProductList"
+// import Cart from "../Components/Cart";
 
 const HomePage = () => {
   return (
     <div className="container">
       <ProductList />
-      <Cart />
+      {/* <Cart /> */}
     </div>
   );
 };
