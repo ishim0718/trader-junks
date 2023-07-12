@@ -5,7 +5,7 @@ import { UPDATE_PRODUCTS } from '../../utils/actions';
 import { useQuery } from '@apollo/client';
 import { QUERY_PRODUCTS } from '../../utils/queries';
 import { idbPromise } from '../../utils/helpers';
-// import spinner from '../../assets/spinner.gif';
+import spinner from '../../assets/spinner.gif';
 
 function ProductList() {
   const [state, dispatch] = useStoreContext();
@@ -54,6 +54,7 @@ function ProductList() {
               _id={product._id}
               image={product.image}
               name={product.name}
+
               price={product.price}
               addedBy={product.addedBy}
             />
@@ -63,6 +64,7 @@ function ProductList() {
         <h3>You haven't added any products yet!</h3>
       )}
       {loading ? <p>Loading...</p> : null}
+
     </div>
   );
 }
