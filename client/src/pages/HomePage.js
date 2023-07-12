@@ -8,7 +8,7 @@ const HomePage = () => {
     <div className="container">
       <CategoryMenu />
       <ProductList />
-      <Cart />
+      {/* <Cart /> */}
     </div>
   );
 };
