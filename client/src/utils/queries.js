@@ -24,7 +24,6 @@ query getProducts {
         description
         price
         image
-        link
         addedBy
     }
 }
@@ -38,7 +37,6 @@ query getSingleProduct($productId: ID!) {
         description
         price
         image
-        link
         addedBy
     }
 }
