@@ -74,6 +74,10 @@ footer {
   list-style: none;
 }
 
+.mx-2 {
+  font-weight: 500;
+}
+
 .flex-row h1 {
   display: flex;
   margin-top: 1em;

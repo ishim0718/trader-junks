@@ -149,8 +149,8 @@ function Signup(props)  {
             onChange={handleChange}
           />
         </div>
-        <div>
-          <label>Address:</label>
+        <div className='mx-2'>
+          <label>Address</label>
         </div>
         <div className="flex-row space-between my-2">
           <label htmlFor="addressLines">Street Line: </label>
