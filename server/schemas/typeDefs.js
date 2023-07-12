@@ -18,7 +18,7 @@ type Product {
     description: String!
     price: Float!
     image: String!
-    addedBy: User!
+    addedBy: String!
 }
 
 type Auth {

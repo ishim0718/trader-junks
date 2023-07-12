@@ -50,9 +50,11 @@ function ProductList() {
         <div className="flex-row">
           {filterProducts().map((product) => (
             <ProductItem
-              name={product.name}
-              description={product.description}
+              key={product._id}
+              _id={product._id}
               image={product.image}
+              name={product.name}
+
               price={product.price}
               addedBy={product.addedBy}
             />
@@ -61,7 +63,8 @@ function ProductList() {
       ) : (
         <h3>You haven't added any products yet!</h3>
       )}
-      {loading ? <img src={spinner} alt="loading" /> : null}
+      {loading ? <p>Loading...</p> : null}
+
     </div>
   );
 }
