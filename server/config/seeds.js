@@ -6,53 +6,53 @@ db.once('open', async() => {
 
     const products = await Product.insertMany([
         {
-            "name": "50 inch Flatscreen TV",
-            "description": "A flatscreen TV with internet capabilities and integrated ROKU",
-            "price": 150,
-            "image": "tv_image.jpg",
-            "addedBy": "thomasshea"
+            name: "50 inch Flatscreen TV",
+            description: "A flatscreen TV with internet capabilities and integrated ROKU",
+            price: 150,
+            image: "tv_image.jpg",
+            addedBy: "thomasshea"
         },
         {
-            "name": "Autographed Football", 
-            "description": "A football signed by legendary football player Bo Jackson.",
-            "price": 450,
-            "image": "football.png",
-            "addedBy": "thomasshea"
+            name: "Autographed Football", 
+            description: "A football signed by legendary football player Bo Jackson.",
+            price: 450,
+            image: "football.png",
+            addedBy: "thomasshea"
         },
         {
-            "name": "Playstation 5",
-            "description": "A Sony Playstation 5 that comes with 3 games and 2 controllers",
-            "price": 500,
-            "image": "ps5.jpg",
-            "addedBy": "ianheap"
+            name: "Playstation 5",
+            description: "A Sony Playstation 5 that comes with 3 games and 2 controllers",
+            price: 500,
+            image: "ps5.jpg",
+            addedBy: "ianheap"
         },
         {
-            "name": "iPhone 8 Plus",
-            "description": "A slightly used iPhone 8 Plus in good condition.",
-            "price": 120,
-            "image": "iphone8.jpg",
-            "addedBy": "chrisramsey"
+            name: "iPhone 8 Plus",
+            description: "A slightly used iPhone 8 Plus in good condition.",
+            price: 120,
+            image: "iphone8.jpg",
+            addedBy: "chrisramsey"
         },
         {
-            "name": "Used Golf Clubs",
-            "description": "A set of used Callaway golf irons. The set shows signs of use but still works",
-            "price": 70,
-            "image": "golf_clubs.jpg",
-            "addedBy": "thomasshea"
+            name: "Used Golf Clubs",
+            description: "A set of used Callaway golf irons. The set shows signs of use but still works",
+            price: 70,
+            image: "golf_clubs.jpg",
+            addedBy: "thomasshea"
         },
         {
-            "name": "Weight Set",
-            "description": "A bench and barbell with plate weights.",
-            "price": 180,
-            "image": "weight_bench.jpg",
-            "addedBy": "daveshim"
+            name: "Weight Set",
+            description: "A bench and barbell with plate weights.",
+            price: 180,
+            image: "weight_bench.jpg",
+            addedBy: "daveshim"
         },
         {
-            "name": "Riding Lawn Mower",
-            "description": "A John Deere Lawn Tractor with a 42 inch cut deck.",
-            "price": 1200,
-            "image": "lawnmower.jpg",
-            "addedBy": "tamjidhossain"
+            name: "Riding Lawn Mower",
+            description: "A John Deere Lawn Tractor with a 42 inch cut deck.",
+            price: 1200,
+            image: "lawnmower.jpg",
+            addedBy: "tamjidhossain"
         }
     ])
     console.log('Products Successfully Seeded')
