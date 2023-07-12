@@ -2,12 +2,22 @@ import React from "react";
 import ProductItem from "../Components/ProductItem";
 import ProductList from "../Components/ProductList"
 // import Cart from "../Components/Cart";
+import { USE_QUERY, useQuery } from '@apollo/client'
+import { QUERY_PRODUCTS } from "../utils/queries";
+
 
 const HomePage = () => {
+  const { loading, data } = useQuery(QUERY_PRODUCTS);
+  const products = data?.products|| []
+
   return (
     <div className="container">
-      <ProductList />
-      {/* <Cart /> */}
+      {loading ? (
+        <div>Loading...</div>
+      ) : (
+      <ProductList 
+        products={products}/>
+      )}
     </div>
   );
 };
