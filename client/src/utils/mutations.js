@@ -18,13 +18,16 @@ mutation addUser($username: String!, $email: String!, $password: String!, $addre
 export const LOGIN_USER = gql`
 mutation login($email: String!, $password: String!) {
     login(email: $email, password: $password) {
-        _id
-        username
-        email
-        address
-        products {
+        token
+        user {
             _id
-            name
+            username
+            email
+            address
+            products {
+                _id
+                name
+            }
         }
     }
 }
