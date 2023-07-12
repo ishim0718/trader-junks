@@ -34,16 +34,6 @@ function Nav() {
               Login
             </Link>
           </li>
-          <li className="mx-1">
-          <a href="/" onClick={() => Auth.logout()}>
-              Logout
-          </a>
-          </li>
-          <li className="mx-1">
-            <Link to="/OrderHistory">
-              OrderHistory
-            </Link>
-          </li>
         </ul>
       );
     }
