@@ -1,11 +1,12 @@
 
-// require('dotenv').config()
+require('dotenv').config()
 
 
 // const stripe = require('stripe')(process.env.STRIPE_PRIVATE_KEY)
 
 // const storeItems = new map([])
 const express = require('express');
+const mongoose = require("mongoose");
 const { ApolloServer } = require('apollo-server-express');
 const path = require('path');
 const { authMiddleware } = require('./utils/auth')
@@ -20,6 +21,20 @@ const server = new ApolloServer({
   resolvers,
   context: authMiddleware
 });
+
+const { MongoClient, ServerApiVersion } = require('mongodb');
+const uri = "mongodb+srv://admin:admin@cluster0.zb0q6b5.mongodb.net/?retryWrites=true&w=majority";
+
+mongoose
+  .connect(
+    process.env.MONGODB_CONNECTION_STRING,
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    }
+  )
+  .then(() => console.log("MongoDB has been connected"))
+  .catch((err) => console.log(err));
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
