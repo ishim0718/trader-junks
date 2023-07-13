@@ -50,10 +50,10 @@ function ProductItem(item) {
       </Link>
       <div>
         <p>{description}</p>
-        <span>${price}</span>
+        <span className="price">${price}</span>
         <div>Added By: {addedBy}</div>
       </div>
-      <button onClick={addToCart}>Add to cart</button>
+      <button className="cartbtn" onClick={addToCart}>Add to cart</button>
     </div>
   );
 }
