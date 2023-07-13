@@ -1,12 +1,14 @@
 import { gql } from '@apollo/client';
 
 export const QUERY_USER = gql`
-query getUser($username: String!) {
-    user(username: $username) {
+query {
+    user {
         _id
         username
         email
         address
+        firstname
+        lastname
         products{
             _id
             name
@@ -49,8 +51,6 @@ query me {
         username
         email
         address
-        firstname
-        lastname
         products {
             _id
             name

@@ -21,7 +21,7 @@ function Signup(props)  {
   var formattedAddress = '';
   var dvpResponse = '';
 
-  const [addUser, { error, data }] = useMutation(ADD_USER);
+  const [addUser] = useMutation(ADD_USER);
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
@@ -59,30 +59,16 @@ function Signup(props)  {
               lastname: formState.lastname,
               address: formattedAddress,
           }});
-          // const token = mutationResponse.addUser.token;
-          //   Auth.login(token);
+
+          console.log(mutationResponse)
+          const token = mutationResponse.data.addUser.token;
+          Auth.login(token);
         } catch(e) {
           console.log(e);
         }
       } else {
           console.log("Cannot deliver to this address");
       };
-    
-    // const mutationResponse = await addUser({
-    //   variables: {
-    //     username: formState.username,
-    //     email: formState.email,
-    //     password: formState.password,
-    //     firstName: formState.firstName,
-    //     lastName: formState.lastName,
-    //     address: formattedAddress,
-    //   }
-    // });
-
-    // console.log(mutationResponse);
-  
-    // const token = data.addUser.token;
-    //   Auth.login(token);
   };
 
   const handleChange = (event) => {

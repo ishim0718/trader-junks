@@ -5,12 +5,17 @@ const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
 
 const resolvers = {
     Query: {
-        // query a user based on username
-        user: async(parent, { username }) => {
-            return User.findOne({ username }).populate('products');
+        // query a user
+        user: async (parent, args, context) => {
+            if (context.user) {
+                const user = await User.findById(context.user._id).populate('products')
+                console.log(user)
+                return user
+            }
+            throw new AuthenticationError('Not Logged in')
         },
         // query a user's products
-        products: async(parent, { username }) => {
+        products: async (parent, { username }) => {
             const params = username ? { username } : {}
             return Product.find(params).sort({ _id: 1 })
         },

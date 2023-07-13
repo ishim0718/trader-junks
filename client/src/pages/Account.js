@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useQuery, useMutation } from '@apollo/client';
-import { QUERY_ME } from '../utils/queries';
+import { QUERY_USER } from '../utils/queries';
 import { ADD_PRODUCT } from '../utils/mutations';
 
 function Account() {
-  const { data } = useQuery(QUERY_ME);
+  const { data } = useQuery(QUERY_USER);
   let user;
   console.log(data)
 
