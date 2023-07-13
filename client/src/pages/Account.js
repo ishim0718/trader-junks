@@ -104,6 +104,9 @@ function Account() {
                             onChange={handleChange}
                         />
                     </div>
+                    <div className="flex-row flex-end">
+          <button type="submit">Submit</button>
+        </div>
                 </form>
             </div>
             <h3>
