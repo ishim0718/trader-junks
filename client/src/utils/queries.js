@@ -56,7 +56,6 @@ query me {
             price
             image
             link
-            addedBy
         }
     }
 }
