@@ -52,9 +52,9 @@ function Account() {
                 {user.firstname} {user.lastname}'s Account:
             </h2>
             <div>
-            <h2>
+            <h3>
                 Current Products for Sale:
-            </h2>
+            </h3>
             {user.products.map((product) => (
                 <div key={product._id} className='my-2'>
                     <Link to={`products/${product._id}`}>
@@ -65,7 +65,7 @@ function Account() {
             ))}
             </div>
             <div>
-                <h2>Add a Product:</h2>
+                <h3>Add a Product:</h3>
                 <form onSubmit={handleFormSubmit}>
                     <div className='flex-row space-between my-2'>
                         <label htmlFor='product-name'>Product Name:</label>
@@ -106,9 +106,9 @@ function Account() {
                     </div>
                 </form>
             </div>
-            <h2>
+            <h3>
               Order History for {user.firstname} {user.lastname}
-            </h2>
+            </h3>
             {user.orders.map((order) => (
               <div key={order._id} className="my-2">
                 <h3>
