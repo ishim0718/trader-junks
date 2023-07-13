@@ -18,7 +18,7 @@ type Product {
     name: String!
     description: String!
     price: Float!
-    image: String!
+    image: String
     addedBy: String!
 }
 

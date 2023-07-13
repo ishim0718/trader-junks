@@ -17,6 +17,7 @@ function Account() {
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
+    console.log(formState);
     try {
         const mutationResponse = await addProduct({
             variables: {
@@ -24,7 +25,6 @@ function Account() {
                 description: formState.description,
                 price: formState.price,
                 image: formState.image,
-                addedBy: user.username,
             }
         })
         console.log(mutationResponse)
@@ -68,11 +68,11 @@ function Account() {
                 <h3>Add a Product:</h3>
                 <form onSubmit={handleFormSubmit}>
                     <div className='flex-row space-between my-2'>
-                        <label htmlFor='product-name'>Product Name:</label>
+                        <label htmlFor='name'>Product Name:</label>
                         <input
-                            name='product-name'
+                            name='name'
                             type='text'
-                            id='product'
+                            id='name'
                             onChange={handleChange}
                         />
                     </div>
