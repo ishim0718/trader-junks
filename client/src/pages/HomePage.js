@@ -4,7 +4,7 @@ import ProductList from "../Components/ProductList"
 // import Cart from "../Components/Cart";
 import { useQuery } from '@apollo/client'
 import { QUERY_PRODUCTS } from "../utils/queries";
-
+import Cart from "../Components/Cart";
 
 const HomePage = () => {
   const { loading, data } = useQuery(QUERY_PRODUCTS);
@@ -18,6 +18,7 @@ const HomePage = () => {
       <ProductList 
         products={products}/>
       )}
+      <Cart />
     </div>
   );
 };

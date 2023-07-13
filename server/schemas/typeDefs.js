@@ -21,6 +21,16 @@ type Product {
     addedBy: String!
 }
 
+type Order {
+    _id: ID
+    purchaseDate: String
+    products: [Product]
+}
+
+type Checkout {
+    session: ID
+}
+
 type Auth {
     token: ID!
     user: User
@@ -31,6 +41,8 @@ type Query {
     products: [Product]
     product(productId: ID!): Product
     me: User
+    order(_id: ID!): Order
+    checkout(products: [ID]!): Checkout
 }
 
 type Mutation {
@@ -38,6 +50,7 @@ type Mutation {
     login(email: String!, password: String): Auth
     addProduct(name: String!, description: String!, price: Float!, image: String): User
     removeProduct(productId: ID!): User
+    addOrder(products: [ID]!): Order
 }
 `;
 
