@@ -5,12 +5,11 @@ import { QUERY_USER } from '../utils/queries';
 import { ADD_PRODUCT } from '../utils/mutations';
 
 function Account() {
-  const { data } = useQuery(QUERY_USER);
+  const { loading, data } = useQuery(QUERY_USER);
   let user;
-  console.log(data)
-
+  
   if (data) {
-    user = data.user;
+    user = data.user
   }
 
   const [formState, setFormState] = useState({ name: '', description: '', price: '', image: '' }) ;
@@ -25,7 +24,7 @@ function Account() {
                 description: formState.description,
                 price: formState.price,
                 image: formState.image,
-                addedBy: user
+                addedBy: user.username,
             }
         })
         console.log(mutationResponse)

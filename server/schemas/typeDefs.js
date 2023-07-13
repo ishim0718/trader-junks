@@ -9,7 +9,8 @@ type User {
     firstname: String!
     lastname: String!
     address: String!
-    products: [Product]!
+    orders: [Order]
+    products: [Product]
 }
 
 type Product {
@@ -37,10 +38,9 @@ type Auth {
 }
 
 type Query {
-    user(username: String!): User
     products: [Product]
     product(productId: ID!): Product
-    me: User
+    user: User
     order(_id: ID!): Order
     checkout(products: [ID]!): Checkout
 }

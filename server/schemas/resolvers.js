@@ -6,9 +6,9 @@ const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
 const resolvers = {
     Query: {
         // query a user based on username
-        user: async(parent, { username }) => {
-            return User.findOne({ username }).populate('products');
-        },
+        // user: async(parent, { username }) => {
+        //     return User.findOne({ username }).populate('products');
+        // },
         // query a user's products
         products: async(parent, { username }) => {
             const params = username ? { username } : {}
@@ -23,11 +23,17 @@ const resolvers = {
             return Product.find(products);
         },
         // query me
-        me: async(parent, args, context) => {
+        user: async(parent, args, context) => {
             if (context.user) {
-                return User.findOne({ _id: context.user._id }).populate('products');
+            const user = await User.findOne({ _id: context.user._id })
+            // .populate({path: ['orders.products', 'products']});
+            
+            // user.orders.sort((a, b) => b.purchaseDate - a.purchaseDate);
+
+            return user;
             }
-            throw new AuthenticationError('You need to be logged in!')
+            throw new AuthenticationError('You need to be logged in!');
+
         },
         order: async (parent, { _id }, context) => {
             if (context.user) {
