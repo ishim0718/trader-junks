@@ -49,6 +49,8 @@ query me {
         username
         email
         address
+        firstname
+        lastname
         products {
             _id
             name
