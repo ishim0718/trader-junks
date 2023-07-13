@@ -27,7 +27,7 @@ const uri = "mongodb+srv://admin:admin@cluster0.zb0q6b5.mongodb.net/?retryWrites
 
 mongoose
   .connect(
-    process.env.MONGODB_CONNECTION_STRING,
+    uri,
     {
       useNewUrlParser: true,
       useUnifiedTopology: true,
