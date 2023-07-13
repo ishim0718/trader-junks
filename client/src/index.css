@@ -140,3 +140,7 @@ a:hover .trashcan{
 .cartbtn:active {
   background-color: var(--header);
 }
+
+.prodName {
+  text-align: center;
+}
