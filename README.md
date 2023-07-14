@@ -39,3 +39,7 @@ This application uses the ISC Licesne
 * Stripe 
 
 * Apollo
+
+## Links
+Heroku Deployment: https://trader-junks-91f61916a1cf.herokuapp.com/
+Github: https://github.com/ishim0718/trader-junks
