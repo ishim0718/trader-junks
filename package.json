@@ -7,11 +7,11 @@
     "node": "19.5.0"
   },
   "scripts": {
-    "start": "concurrently \"npm run server\" \"npm run start --prefix client\"",
+    "start": "node server.js",
     "develop": "concurrently \"npm run server\" \"npm run start --prefix client\"",
     "install": "cd server && npm i && cd ../client && npm i",
     "install-client": "cd client && npm install",
-    "heroku-postbuild": "npm run install-client && npm run build",
+    "heroku-postbuild": "cd client && npm install --only=dev && npm install && npm run build",
     "seed": "cd server && npm run seed",
     "server": "cd server && node server.js",
     "build": "cd client && npm run build"
