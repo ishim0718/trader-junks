@@ -112,11 +112,11 @@ const resolvers = {
                     description,
                     price,
                     image,
-                    addedBy: context.user.username,
+                    addedBy: context.user.username
                 });
                 await User.findOneAndUpdate(
                     { _id: context.user._id },
-                    { $addToSet: { products: product._id }}
+                    { $addToSet: { product: product._id }}
                 );
                 return product
             }

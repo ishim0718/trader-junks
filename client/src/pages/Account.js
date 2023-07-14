@@ -4,29 +4,33 @@ import { useQuery, useMutation } from '@apollo/client';
 import { QUERY_USER } from '../utils/queries';
 import { ADD_PRODUCT } from '../utils/mutations';
 
-function Account() {
+function Account(props) {
   const { loading, data } = useQuery(QUERY_USER);
   let user;
-  
+
   if (data) {
     user = data.user
   }
 
+  console.log(user)
+  
   const [formState, setFormState] = useState({ name: '', description: '', price: '', image: '' }) ;
   const [addProduct, { error }] = useMutation(ADD_PRODUCT);
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     console.log(formState);
-    try {
+    var num = parseInt(formState.price);
+    console.log(num);
+    try {  
         const mutationResponse = await addProduct({
             variables: {
                 name: formState.name,
                 description: formState.description,
-                price: formState.price,
+                price: num,
                 image: formState.image,
             }
-        })
+        });
         console.log(mutationResponse)
     } catch (err) {
         console.log(err)
@@ -40,6 +44,7 @@ function Account() {
         [name]: value,
     });
   }
+
 
   return (
     <>
@@ -55,10 +60,10 @@ function Account() {
             <h3>
                 Current Products for Sale:
             </h3>
-            {user.products.map((product) => (
+            {user.product.map((product) => (
                 <div key={product._id} className='my-2'>
                     <Link to={`products/${product._id}`}>
-                        <h3>{product.name}</h3>
+                        <h4>{product.name}</h4>
                         <img src={product.image} alt={product.name} />
                     </Link>
                 </div>
@@ -89,7 +94,7 @@ function Account() {
                         <label htmlFor='price'>Price:</label>
                         <input
                             name='price'
-                            type='text'
+                            type='number'
                             id='price'
                             onChange={handleChange}
                         />
@@ -105,33 +110,13 @@ function Account() {
                         />
                     </div>
                     <div className="flex-row flex-end">
-          <button type="submit">Submit</button>
-        </div>
+                      <button type="submit">Submit</button>
+                    </div>
                 </form>
             </div>
             <h3>
               Order History for {user.firstname} {user.lastname}
             </h3>
-            {user.orders.map((order) => (
-              <div key={order._id} className="my-2">
-                <h3>
-                  {new Date(parseInt(order.purchaseDate)).toLocaleDateString()}
-                </h3>
-                <div className="flex-row">
-                  {order.products.map(({ _id, image, name, price }, index) => (
-                    <div key={index} className="card px-1 py-1">
-                      <Link to={`/products/${_id}`}>
-                        <img alt={name} src={`/images/${image}`} />
-                        <p>{name}</p>
-                      </Link>
-                      <div>
-                        <span>${price}</span>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            ))}
           </>
         ) : null}
       </div>
