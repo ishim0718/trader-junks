@@ -19,7 +19,7 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "Dependencies": {
+  "dependencies": {
     "concurrently": "^5.1.0",
     "nodemon": "^2.0.3"
   }
