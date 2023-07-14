@@ -15,11 +15,9 @@ const productSchema = new Schema({
   },
   image: {
     type: String,
-    required: true,
   },
   addedBy: {
     type: String,
-    required: true,
     trim: true
   }
 });

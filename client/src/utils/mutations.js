@@ -22,11 +22,12 @@ mutation login($email: String!, $password: String!) {
         user {
             _id
             username
+            firstname
+            lastname
             email
             address
-            products {
+            product {
                 _id
-                name
             }
         }
     }
@@ -41,7 +42,6 @@ mutation addProduct($name: String!, $description: String!, $price: Float!, $imag
         description
         price
         image
-        addedBy
     }
 }
 `;
