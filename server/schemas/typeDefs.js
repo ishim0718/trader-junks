@@ -10,7 +10,7 @@ type User {
     lastname: String!
     address: String!
     orders: [Order]
-    products: [Product]
+    product: [Product]
 }
 
 type Product {
@@ -18,8 +18,8 @@ type Product {
     name: String!
     description: String!
     price: Float!
-    image: String!
-    addedBy: String!
+    image: String
+    addedBy: String
 }
 
 type Order {
@@ -48,7 +48,7 @@ type Query {
 type Mutation {
     addUser(username: String!, email: String!, password: String!, address: String!, firstname: String!, lastname: String!): Auth
     login(email: String!, password: String): Auth
-    addProduct(name: String!, description: String!, price: Float!, image: String): User
+    addProduct(name: String!, description: String!, price: Float!, image: String): Product
     removeProduct(productId: ID!): User
     addOrder(products: [ID]!): Order
 }
