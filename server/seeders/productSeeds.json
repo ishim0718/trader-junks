@@ -3,49 +3,49 @@
         "name": "50 inch Flatscreen TV",
         "description": "A flatscreen TV with internet capabilities and integrated ROKU",
         "price": 150,
-        "image": "/images/tv_image.jpg",
+        "image": "images/tv_image.jpg",
         "addedBy": "thomasshea"
     },
     {
         "name": "Autographed Football", 
         "description": "A football signed by legendary football player Bo Jackson.",
         "price": 450,
-        "image": "/images/football.png",
+        "image": "images/football.png",
         "addedBy": "thomasshea"
     },
     {
         "name": "Playstation 5",
         "description": "A Sony Playstation 5 that comes with 3 games and 2 controllers",
         "price": 500,
-        "image": "/images/ps5/.jpg",
+        "image": "images/ps5/.jpg",
         "addedBy": "ianheap"
     },
     {
         "name": "iPhone 8 Plus",
         "description": "A slightly used iPhone 8 Plus in good condition.",
         "price": 120,
-        "image": "/images/iphone8.jpg",
+        "image": "images/iphone8.jpg",
         "addedBy": "chrisramsey"
     },
     {
         "name": "Used Golf Clubs",
         "description": "A set of used Callaway golf irons. The set shows signs of use but still works",
         "price": 70,
-        "image": "/images/golf_clubs.jpg",
+        "image": "images/golf_clubs.jpg",
         "addedBy": "thomasshea"
     },
     {
         "name": "Weight Set",
         "description": "A bench and barbell with plate weights.",
         "price": 180,
-        "image": "/images/weight_bench.jpg",
+        "image": "images/weight_bench.jpg",
         "addedBy": "daveshim"
     },
     {
         "name": "Riding Lawn Mower",
         "description": "A John Deere Lawn Tractor with a 42 inch cet deck.",
         "price": 1200,
-        "image": "/images/lawnmower.jpg",
+        "image": "images/lawnmower.jpg",
         "addedBy": "tamjidhossain"
     }
 ]
