@@ -18,10 +18,8 @@
     "express": "^4.17.1",
     "graphql": "^16.2.0",
     "jsonwebtoken": "^9.0.0",
-    "mongodb": "^5.7.0",
     "mongoose": "^6.9.2",
-    "stripe": "^12.10.0",
-    "concurrently": "^5.1.0"
+    "stripe": "^12.10.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.3"

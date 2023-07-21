@@ -105,18 +105,19 @@ const resolvers = {
             return { token, user }
         },
         // mutation to add a product
-        addProduct: async(parent, {name, description, price, image}, context) => {
+        addProduct: async(parent, {name, description, price, image, link }, context) => {
             if (context.user) {
                 const product = await Product.create({
                     name,
                     description,
                     price,
                     image,
-                    addedBy: context.user.username
+                    link,
+                    addedBy: context.user.username,
                 });
                 await User.findOneAndUpdate(
                     { _id: context.user._id },
-                    { $addToSet: { product: product._id }}
+                    { $addToSet: { products: product._id }}
                 );
                 return product
             }

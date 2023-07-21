@@ -9,10 +9,19 @@ query getUser {
         lastname
         email
         address
-        product{
-        _id
-        name
-        description
+        products{
+          _id
+          name
+          description
+        }
+        orders{
+          _id
+          purchaseDate
+          products{
+            _id
+            name
+            description
+          }
         }
     }
 }
