@@ -72,6 +72,7 @@ footer {
   saturate(10);
 }
 
+
 .mx-1 {
   list-style: none;
 }
@@ -143,4 +144,11 @@ a:hover .trashcan{
 
 .prodName {
   text-align: center;
+}
+
+.prodImage {
+  width: 20vw;
+  height: auto;
+  margin: auto;
+  display: block;
 }
