@@ -1,6 +1,8 @@
 import React from "react";
 import Auth from "../../utils/auth";
 import { Link } from "react-router-dom";
+import searchBar from '../SearchBar'
+import SearchBar from "../SearchBar";
 
 function Nav() {
 
@@ -45,6 +47,7 @@ function Nav() {
         <Link to="/">
           <span role="img" aria-label="shopping bag" className="trashcan">🗑️</span>
           Trader Junks
+          <SearchBar />
         </Link>
       </h1>
 

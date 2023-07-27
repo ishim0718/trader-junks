@@ -26,7 +26,6 @@ h6 {
   font-style: italic;
 }
 header, .header {
-  height: 7em;
   background-color: var(--background);
   padding-left: 1em;
   padding-top: 1px;
@@ -43,14 +42,15 @@ footer {
 }
 
 .searchBar {
-  width: 20rem;
+  width: 20vw;
   background-color:var(--searchBar);
+  font-family: 'Rubik', sans-serif;
+  font-size: 0.5em;
   border: none;
   padding: 0.75rem; 
   border-radius: 1em;
   margin: .5em;
   display: inline-flex;
-  width: 30%;
   position: relative;
   left: 12%;
 }
@@ -62,8 +62,11 @@ footer {
 }
 
 .navbar .mx-1 a {
-  padding-right: 3em;
+  font-family: 'Rubik Mono One', sans-serif;
+  font-size: 1.2em;
+  padding-right: 4em;
   color: var(--header-hover);
+  margin-bottom: 5em;
 }
 
 .navbar a:hover {
