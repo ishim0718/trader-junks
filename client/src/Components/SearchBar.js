@@ -9,12 +9,13 @@ const getFilteredItems = (query, data) => {
   if (!query) {
     return data?.products;
   }
-  return data?.products.filter((product) => product?.name.toUpperCase().startsWith(query?.toUpperCase()));
+  return data?.products.filter((product) => product?.name.toUpperCase().includes(query?.toUpperCase()));
 }
 
 const SearchBar = ({keyword}) => {
   const [Query, setQuery] = useState("");
   const { data } = useQuery(QUERY_PRODUCTS);
+  // Need to pass this to ProductList
   const filteredItems = getFilteredItems(Query, data);
   console.log(`data: ${JSON.stringify(filteredItems)}`)
     return (

@@ -6,7 +6,7 @@ import { useQuery } from '@apollo/client';
 import { QUERY_PRODUCTS } from '../../utils/queries';
 import { idbPromise } from '../../utils/helpers';
 
-function ProductList() {
+function ProductList({filteredItems}) {
   const [state, dispatch] = useStoreContext();
 
   const { currentCategory } = state;
@@ -34,7 +34,8 @@ function ProductList() {
 
   function filterProducts() {
     if (!currentCategory) {
-      return state.products;
+      // return state.products;
+      return state?.filteredItems;
     }
 
     return state.products.filter(

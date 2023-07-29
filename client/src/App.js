@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import {
   ApolloClient,
@@ -35,17 +35,18 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
-function App() {
+function App() { 
+const [filteredItems, setFilteredItems] = useState([]);
   return (
     <ApolloProvider client={client}>
       <Router>
         <div>
           <StoreProvider>
-            <Nav />
+            <Nav filteredItems={filteredItems}/>
             <Routes>
               <Route 
                 path="/" 
-                element={<HomePage />} 
+                element={<HomePage setFilteredItems={setFilteredItems}/>} 
               />
               <Route 
                 path="/Login" 

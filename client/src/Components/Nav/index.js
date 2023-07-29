@@ -3,7 +3,7 @@ import Auth from "../../utils/auth";
 import { Link } from "react-router-dom";
 import SearchBar from "../SearchBar";
 
-function Nav() {
+function Nav({filteredItems}) {
 
   function showNavigation() {
     if (Auth.loggedIn()) {
@@ -47,7 +47,7 @@ function Nav() {
           <span role="img" aria-label="shopping bag" className="trashcan">🗑️</span>
           Trader Junks
         </Link>
-        <SearchBar />
+        <SearchBar filteredItems={filteredItems}/>
       </h1>
       <nav>
         {showNavigation()}
