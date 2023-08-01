@@ -1,9 +1,15 @@
 import React from "react";
 import Auth from "../../utils/auth";
-import { Link } from "react-router-dom";
+import { Link, json, useLocation } from "react-router-dom";
 import SearchBar from "../SearchBar";
 
-function Nav({filteredItems}) {
+function Nav() {
+  const getFilteredItems = (filteredItems) => {
+    console.log(`The value of this is: ${JSON.stringify(filteredItems)}`)
+    return filteredItems;
+  }
+  
+  const location = useLocation();
 
   function showNavigation() {
     if (Auth.loggedIn()) {
@@ -40,20 +46,36 @@ function Nav({filteredItems}) {
     }
   }
 
-  return (
-    <header className="flex-row px-1">
-      <h1>
-        <Link to="/">
-          <span role="img" aria-label="shopping bag" className="trashcan">🗑️</span>
-          Trader Junks
-        </Link>
-        <SearchBar filteredItems={filteredItems}/>
-      </h1>
-      <nav>
-        {showNavigation()}
-      </nav>
-    </header>
-  );
+  if (location.pathname === "/") {
+    return (
+      <header className="flex-row px-1">
+        <h1>
+          <Link to="/">
+            <span role="img" aria-label="shopping bag" className="trashcan">🗑️</span>
+            Trader Junks
+          </Link>
+          <SearchBar passFilteredItems={getFilteredItems}/>
+        </h1>
+        <nav>
+          {showNavigation()}
+        </nav>
+      </header>
+    );
+  } else {
+    return (
+      <header className="flex-row px-1">
+        <h1>
+          <Link to="/">
+            <span role="img" aria-label="shopping bag" className="trashcan">🗑️</span>
+            Trader Junks
+          </Link>
+        </h1>
+        <nav>
+          {showNavigation()}
+        </nav>
+      </header>
+    );
+  }
 }
 
 export default Nav;
