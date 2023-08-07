@@ -54,7 +54,6 @@ function Nav() {
             <span role="img" aria-label="shopping bag" className="trashcan">🗑️</span>
             Trader Junks
           </Link>
-          <SearchBar passFilteredItems={getFilteredItems}/>
         </h1>
         <nav>
           {showNavigation()}

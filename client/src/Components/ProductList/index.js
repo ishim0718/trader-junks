@@ -34,8 +34,8 @@ function ProductList({filteredItems}) {
 
   function filterProducts() {
     if (!currentCategory) {
-      // return state.products;
-      return state?.filteredItems;
+      return state.products;
+      // return state?.filteredItems;
     }
 
     return state.products.filter(

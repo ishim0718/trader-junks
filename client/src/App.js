@@ -41,7 +41,7 @@ const [filteredItems, setFilteredItems] = useState([]);
     <ApolloProvider client={client}>
       <Router>
         <div>
-          <StoreProvider>
+          <StoreProvider products={filteredItems}>
             <Nav filteredItems={filteredItems}/>
             <Routes>
               <Route 
