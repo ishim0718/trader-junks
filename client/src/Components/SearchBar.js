@@ -12,12 +12,12 @@ const getFilteredItems = (query, data) => {
   return data?.products.filter((product) => product?.name.toUpperCase().includes(query?.toUpperCase()));
 }
 // Child of Nav
-const SearchBar = ({keyword, passFilteredItems}) => {
+const SearchBar = ({keyword, setFilteredItems}) => {
   const [Query, setQuery] = useState("");
   const { data } = useQuery(QUERY_PRODUCTS);
   // Need to pass this to ProductList
   const filteredItems = getFilteredItems(Query, data);
-  console.log(`data: ${JSON.stringify(filteredItems)}`)
+  console.log(`query: ${JSON.stringify(Query)}`)
     return (
       <div>
         <input 
@@ -26,8 +26,8 @@ const SearchBar = ({keyword, passFilteredItems}) => {
         value={keyword}
         placeholder={"Search Junk"}
         onChange={(e) => setQuery(e.target.value)}
+        onInput={(e) => setFilteredItems(filteredItems)}
         />
-        {/* <button className="searchButton" onClick={()=> passFilteredItems(filteredItems)}>Click Here</button> */}
       </div>
     );
   }
