@@ -6,7 +6,7 @@ import { useQuery } from '@apollo/client';
 import { QUERY_PRODUCTS } from '../../utils/queries';
 import { idbPromise } from '../../utils/helpers';
 
-function ProductList({products}) {
+function ProductList({filteredItems, query}) {
   const [state, dispatch] = useStoreContext();
 
   const { currentCategory } = state;
@@ -34,12 +34,12 @@ function ProductList({products}) {
 
   function filterProducts() {
     if (!currentCategory) {
-      // return state.products;
-      console.log(`filtered items: ${JSON.stringify(products)}`)
-      if (typeof(products) === 'undefined' || typeof(products) === null || products.length === 0) {
+      // console.log(`filtered items: ${JSON.stringify(products)}`)
+      if (typeof(filteredItems) === 'undefined' || typeof(filteredItems) === null || filteredItems.length === 0 || query === "") {
         return state.products;
       } else {
-        return products;
+        console.log(`query: ${query} & filteredItems: ${JSON.stringify(filteredItems)}`)
+        return filteredItems;
       }
     }
 
@@ -52,7 +52,7 @@ function ProductList({products}) {
     <div className="my-2">
       <h2>Our Products:</h2>
       {state.products.length ? (
-        <div className="flex-row">
+        <span className="flex-row">
           {filterProducts().map((product) => (
             <ProductItem
               key={product._id}
@@ -63,7 +63,7 @@ function ProductList({products}) {
               addedBy={product.addedBy}
             />
           ))}
-        </div>
+        </span>
       ) : (
         <h3>You haven't added any products yet!</h3>
       )}

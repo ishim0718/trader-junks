@@ -7,6 +7,7 @@
   --button-click: #a19e6c;
 }
 
+
 body {
   font-family: 'Rubik', sans-serif;
 }
@@ -50,14 +51,10 @@ footer {
   padding: 0.75rem; 
   border-radius: 1em;
   margin: .5em;
-  display: inline-flex;
-  position: absolute;
+  display: flex;
+  /* position: absolute;
   left: 40%;
-  top: 5%;
-}
-
-.searchButton {
-  background-color: var(--searchBar);
+  top: 5%; */
 }
 
 .navbar {
@@ -113,7 +110,7 @@ a:hover .trashcan{
 }
 
 .container .flex-row {
-  display: inline-flex;
+  display: flex;
   flex-wrap: wrap;
 }
 
@@ -159,4 +156,11 @@ a:hover .trashcan{
   height: auto;
   margin: auto;
   display: block;
+}
+
+@media only screen and (max-width: 1200px) {
+  .searchBar {
+    width: 20vw;
+    background-color:var(lightblue);
+  }
 }

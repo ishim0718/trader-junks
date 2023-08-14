@@ -9,6 +9,7 @@ import SearchBar from "../Components/SearchBar";
 const HomePage = () => {
   const { loading, data } = useQuery(QUERY_PRODUCTS);
   const products = data?.products|| []
+  const[Query, setQuery] = useState("");
   const [filteredItems, setFilteredItems] = useState(products);
 
   return (
@@ -17,8 +18,8 @@ const HomePage = () => {
         <div>Loading...</div>
       ) : (
         <div>
-          <h1><SearchBar setFilteredItems={setFilteredItems}/> </h1>
-          <ProductList products={filteredItems}/>
+          <h1><SearchBar query={Query} setQuery={setQuery} setFilteredItems={setFilteredItems}/> </h1>
+          <ProductList query={Query} filteredItems={filteredItems}/>
       </div>
       )}
       <Cart />

@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import { React, useEffect, useState } from "react";
 import { QUERY_PRODUCTS } from '../utils/queries';
 import { useQuery } from "@apollo/client";
 import { json } from "react-router-dom";
@@ -12,12 +12,10 @@ const getFilteredItems = (query, data) => {
   return data?.products.filter((product) => product?.name.toUpperCase().includes(query?.toUpperCase()));
 }
 // Child of Nav
-const SearchBar = ({keyword, setFilteredItems}) => {
-  const [Query, setQuery] = useState("");
+const SearchBar = ({keyword, setFilteredItems, query, setQuery}) => {
   const { data } = useQuery(QUERY_PRODUCTS);
-  // Need to pass this to ProductList
-  const filteredItems = getFilteredItems(Query, data);
-  console.log(`query: ${JSON.stringify(Query)}`)
+  const filteredItems = getFilteredItems(query, data);
+  console.log(`query: ${JSON.stringify(query)} & filteredItems: ${JSON.stringify(filteredItems)}`)
     return (
       <div>
         <input 
@@ -25,8 +23,8 @@ const SearchBar = ({keyword, setFilteredItems}) => {
         key="search-bar"
         value={keyword}
         placeholder={"Search Junk"}
-        onChange={(e) => setQuery(e.target.value)}
-        onInput={(e) => setFilteredItems(filteredItems)}
+        onChange={(e) => {setQuery(e.target.value); } }
+        onInput={(e) => {setFilteredItems(filteredItems)}}
         />
       </div>
     );
